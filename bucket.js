@@ -1,8 +1,5 @@
-import clear from 'clear'
-import colors from 'colors'
-
 const filler = (state) => ({
-	fill: (amount = 1) => {
+	fill: (amount) => {
 		state.level+= amount
 	}
 })
@@ -19,28 +16,16 @@ const tipper = (state) => ({
 	}
 })
 
-
-const reader = (state) => ({
-	read: () => state.level
+const getState = state => ({
+	getState: () => state
 })
 
-const TopBucket = (volume, children, distribution) => {
-	let state = {
-		volume,
-		children,
-		distribution,
-		level: 0
-	}
+const reader = (state) => ({
+	read: () => ' '.repeat(state.level).bgCyan + ' '.repeat(Math.floor(state.volume-state.level)).bgBlue
+})
 
-	return Object.assign(
-		{},
-		filler(state),
-		tipper(state),
-		reader(state),
-	)
-}
 
-const Bucket = (volume, children=[], distribution=[]  ) => {
+const Bucket = (volume = 10, children=[], distribution=[]  ) => {
 	let state = {
 		volume,
 		children,
@@ -56,16 +41,4 @@ const Bucket = (volume, children=[], distribution=[]  ) => {
 	)
 }
 
-const bucket2 = Bucket(15)
-const bucket1 = Bucket(10, [bucket2], [0.5, 0.5])
-
-setInterval(()=> {
-	bucket1.fill()
-	bucket1.tip()
-	clear()
-	console.log(`                    Bucket 1 level: ${bucket1.read()}`.blue)
-	console.log(`Bucket 2 level: ${bucket2.read()}`.yellow)
-
-}, 100)
-
-
+export {filler, tipper, getState, Bucket}

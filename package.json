@@ -4,7 +4,7 @@
   "description": "Wellington bucket fountain model",
   "main": "bucket.js",
   "scripts": {
-    "bucket": "babel-node bucket.js",
+    "bucket": "babel-node fill-em-up.js",
     "test": "mocha --compilers js:babel-core/register --watch"
   },
   "babel": {
