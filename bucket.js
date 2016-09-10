@@ -37,7 +37,8 @@ const Bucket = (volume = 10, children=[], distribution=[]  ) => {
 		{},
 		filler(state),
 		tipper(state),
-		reader(state)
+		reader(state),
+		getState(state)
 	)
 }
 

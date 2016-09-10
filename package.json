@@ -5,7 +5,8 @@
   "main": "bucket.js",
   "scripts": {
     "bucket": "babel-node fill-em-up.js",
-    "test": "mocha --compilers js:babel-core/register --watch"
+    "test:unit": "mocha ./test/unit.js --compilers js:babel-core/register --watch",
+    "test:integration": "mocha ./test/integration.js --compilers js:babel-core/register --watch"
   },
   "babel": {
     "presets": [
