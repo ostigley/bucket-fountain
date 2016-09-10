@@ -23,11 +23,12 @@ describe('The tipper function', () =>{
 
 describe('the getState function', () => {
 	let obj = getState()
-	it('returns an object with a getState', () => {
+	it('returns an object with a getState() method', () => {
 		expect(obj).to.be.a('object')
 		expect(obj).to.have.property('getState')
 		expect(obj.getState).to.be.a('function')
 	})
+
 })
 
 describe('The Bucket making function', () =>{
